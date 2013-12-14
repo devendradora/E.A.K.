@@ -1,0 +1,20 @@
+{
+  "name": "Erase-All-Kittens",
+  "version": "0.2.0",
+  "homepage": "http://eraseallkittens.com",
+  "authors": [
+    "Joe Dytrych <me@jdytrych.co.uk>"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "*",
+    "commonjs": "~0.2.0"
+  }
+}

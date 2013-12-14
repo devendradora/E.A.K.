@@ -1,0 +1,31 @@
+{
+  "name": "Erase-All-Kittens",
+  "version": "0.2.0",
+  "description": "A game that teaches kids to code",
+  "main": " ",
+  "dependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-i18n": "~0.5.0",
+    "grunt-usemin": "~2.0.2",
+    "grunt-livescript": "~0.5.1",
+    "grunt-commonjs": "~0.2.0-rc7",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SomeHats/html-css-game.git"
+  },
+  "author": "Joe Dytrych <j@dytry.ch>",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/SomeHats/html-css-game/issues"
+  }
+}

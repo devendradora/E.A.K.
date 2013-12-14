@@ -8,3 +8,6 @@ bower_components
 public
 jstest
 *.!sync
+.tmp
+app/bower_components
+dist
