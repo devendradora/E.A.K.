@@ -20,11 +20,16 @@ module.exports = (grunt) ->
     watch:
       i18n:
         files: ['l10n-templates/**/*', 'translations/**/*']
-        tasks: ['i18n']
+        tasks: ['i18n', 'copy:i18nWatch']
 
       livescript:
         files: ['app/**/*.ls']
-        tasks: ['livescript', 'copy:lscWatch']
+        tasks: ['livescript', 'commonjs', 'copy:jsWatch']
+
+    connect:
+      server:
+        options:
+          base: ['app/bower_components', '.tmp/dist']
 
     livescript:
       options:
@@ -56,8 +61,21 @@ module.exports = (grunt) ->
         src: ['**/*']
         dest: 'dist'
 
+      jsWatch:
+        expand: true
+        cwd: '.tmp/commonjs'
+        src: ['**/*']
+        dest: '.tmp/dist/scripts'
+
+      i18nWatch:
+        expand: true
+        cwd: '.tmp/l10n/'
+        src: ['**/*']
+        dest: '.tmp/dist'
+
     clean:
       build: ['.tmp', 'dist']
+      tmp: ['.tmp']
   }
 
   grunt.registerTask 'prepare', ['clean:build', 'useminPrepare']
@@ -65,7 +83,11 @@ module.exports = (grunt) ->
   grunt.registerTask 'optimize', ['usemin', 'concat', 'uglify', 'copy:l10nMain', 'copy:l10nDefault']
   grunt.registerTask 'default', ['prepare', 'compile', 'optimize']
 
+  grunt.registerTask 'server', ['clean:tmp', 'i18n', 'copy:i18nWatch', 'livescript', 'commonjs', 'copy:jsWatch', 'connect:server', 'watch']
+
+  grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-watch'

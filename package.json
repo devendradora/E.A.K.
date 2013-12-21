@@ -13,7 +13,9 @@
     "grunt-livescript": "~0.5.1",
     "grunt-commonjs": "~0.2.0-rc7",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-stylus": "~0.11.0"
   },
   "devDependencies": {},
   "scripts": {
