@@ -14,12 +14,32 @@
       <p><%= index.comingSoon %></p>
     </div>
 
+    <!-- Browserify implements its own require function that stops commonjs setting up proper require, so we have to import
+    browserify'd stuff first, and delete the old require -->
+    <!-- build:js /js/browserified.js -->
+    <script src="/bower_components/prelude-ls/browser/prelude-browser.js"></script>
+    <!-- endbuilt -->
+
+    <script>window.bRequire = window.require; window.require = undefined;</script>
+
     <!-- build:js /js/bowerComponents.js -->
+    <script src="/bower_components/commonjs/common.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/bower_components/zeptojs/src/zepto.js"></script>
+    <script src="/bower_components/zeptojs/src/event.js"></script>
+    <script src="/bower_components/zeptojs/src/ajax.js"></script>
+    <script src="/bower_components/zeptojs/src/ie.js"></script>
     <!-- endbuild -->
 
     <!-- build:js /js/app.js -->
-    <script src="/scripts/test.js"></script>
+    <script src="/scripts/init.js"></script>
+    <script src="/scripts/lib.js"></script>
     <!-- endbuild -->
+
+    <script>
+    $(function () {
+      require('init');
+    });
+    </script>
   </body>
 </html>

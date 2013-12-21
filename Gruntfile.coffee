@@ -61,7 +61,7 @@ module.exports = (grunt) ->
       compile:
         expand: true
         cwd: 'app'
-        src: [ 'styles/index.styl' ]
+        src: [ 'styles/index.styl', 'styles/index-small.styl' ]
         dest: '.tmp/styl'
         ext: '.css'
 
