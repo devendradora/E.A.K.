@@ -1,6 +1,5 @@
 *.sublime-*
 npm-debug.log
-provision.sh
 .vagrant
 Vagrantfile
 node_modules
