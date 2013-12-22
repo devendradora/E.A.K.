@@ -86,6 +86,12 @@ module.exports = (grunt) ->
         src: ['**/*']
         dest: 'dist'
 
+      assets:
+        expand: true
+        cwd: 'app'
+        src: 'assets/**/*'
+        dest: 'dist'
+
       jsTmp:
         expand: true
         cwd: '.tmp/commonjs'
@@ -104,7 +110,13 @@ module.exports = (grunt) ->
         src: ['**/*']
         dest: '.tmp/app'
 
+      assetsTmp:
+        expand: true
+        src: 'app/assets/**/*'
+        dest: '.tmp/'
+
       bowerTmp:
+        expand: true
         src: 'app/bower_components/**/*'
         dest: '.tmp/'
 
@@ -115,8 +127,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'prepare', ['clean:build', 'useminPrepare']
   grunt.registerTask 'compile', ['i18n', 'livescript', 'commonjs', 'stylus', 'autoprefixer']
-  grunt.registerTask 'copyTmp', ['copy:jsTmp', 'copy:cssTmp', 'copy:i18nTmp', 'copy:bowerTmp']
-  grunt.registerTask 'optimize', ['usemin', 'concat', 'uglify', 'cssmin', 'copy:l10nMain', 'copy:l10nDefault']
+  grunt.registerTask 'copyTmp', ['copy:jsTmp', 'copy:cssTmp', 'copy:i18nTmp', 'copy:assetsTmp', 'copy:bowerTmp']
+  grunt.registerTask 'optimize', ['usemin', 'concat', 'uglify', 'cssmin', 'copy:l10nMain', 'copy:l10nDefault', 'copy:assets']
   grunt.registerTask 'default', ['prepare', 'compile', 'copyTmp', 'optimize']
 
   grunt.registerTask 'server', ['clean', 'compile', 'copyTmp', 'connect:server', 'watch']
