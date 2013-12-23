@@ -9,9 +9,11 @@
     <!-- endbuild -->
   </head>
   <body>
-    <div class="container">
-      <h1><%= eak %></h1>
-      <p><%= index.comingSoon %></p>
+    <div id="container">
+      <section class="main-menu">
+        <h1><%= eak %></h1>
+        <button class="play"><%= index.play %></button>
+      </section>
     </div>
 
     <!-- Browserify implements its own require function that stops commonjs setting up proper require, so we have to import
@@ -29,11 +31,13 @@
     <script src="/bower_components/zeptojs/src/event.js"></script>
     <script src="/bower_components/zeptojs/src/ajax.js"></script>
     <script src="/bower_components/zeptojs/src/ie.js"></script>
+    <script src="/bower_components/backbone-events-standalone/backbone-events-standalone.js"></script>
     <!-- endbuild -->
 
     <!-- build:js /js/app.js -->
     <script src="/scripts/init.js"></script>
     <script src="/scripts/lib.js"></script>
+    <script src="/scripts/views/main-menu.js"></script>
     <!-- endbuild -->
 
     <script>

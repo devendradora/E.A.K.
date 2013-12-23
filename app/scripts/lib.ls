@@ -19,3 +19,7 @@ window.request-animation-frame =
   window.webkit-request-animation-frame or
   window.ms-request-animation-frame or
   (cb) -> set-timeout cb, 16
+
+# Expose BackboneEvents in a slightly nicer way:
+window.Events = class Events
+  BackboneEvents.mixin @::

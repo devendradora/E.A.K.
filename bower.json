@@ -17,6 +17,7 @@
     "modernizr": "*",
     "commonjs": "~0.2.0",
     "prelude-ls": "~1.0.3",
-    "zeptojs": "~1.1.2"
+    "zeptojs": "~1.1.2",
+    "backbone-events-standalone": "~0.2.1"
   }
 }
