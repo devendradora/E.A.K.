@@ -1,8 +1,11 @@
+path = require 'path'
+lsc = require 'LiveScript'
+
 module.exports = (grunt) ->
   grunt.initConfig {
     pkg: grunt.file.readJSON 'package.json'
     i18n:
-      src: ['l10n-templates/**/*']
+      src: ['l10n-templates/**/*.html']
       options:
         locales: 'translations/*.yaml'
         output: '.tmp/l10n'
@@ -132,6 +135,24 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', ['prepare', 'compile', 'copyTmp', 'optimize']
 
   grunt.registerTask 'server', ['clean', 'compile', 'copyTmp', 'connect:server', 'watch']
+
+  grunt.registerTask 'templates', ->
+    files = grunt.file.expand { cwd: '.tmp/l10n' }, '*/templates/**/*.html'
+
+    grunt.file.mkdir '.tmp/templates'
+
+    locales = {}
+
+    console.log lsc
+
+    for file in files
+      locale = (file.match /^([a-z]+?)\//)[1]
+
+      if locales[locale] is undefined then locales[locale] = ''
+
+      contents = 'module.exports = (data) !->\n  ``with (data) {``\n  return """' + (grunt.file.read ".tmp/l10n/#{file}") + '"""\n  ``}``'
+
+      console.log lsc.compile contents, bare: true
 
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-concat'
